@@ -10,8 +10,12 @@ public class Money implements Expression {
         this.currency = currency;
     }
 
-    String currency() {
+    public String currency() {
         return this.currency;
+    }
+
+    public Money reduce(String to) {
+    	return this;
     }
 
     public Money times(int multiplier) {
@@ -19,7 +23,7 @@ public class Money implements Expression {
     }
 
     public Expression plus(Money addend) {
-    	return new Money(amount + addend.amount, currency);
+    	return new Sum(this, addend);
     }
 
     @Override
