@@ -21,6 +21,10 @@ public class Money {
         return new Money(amount * multiplier, currency);
     }
 
+    public Money plus(Money addend) {
+    	return new Money(amount + addend.amount, currency);
+    }
+
     @Override
     public boolean equals(Object obj) {
         Money money = (Money) obj;
@@ -40,5 +44,6 @@ public class Money {
     public static Money franc(int amount) {
         return new Money(amount, "CHF");
     }
+
 
 }
