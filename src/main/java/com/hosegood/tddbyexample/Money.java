@@ -3,7 +3,7 @@
  */
 package com.hosegood.tddbyexample;
 
-public abstract class Money {
+public class Money {
 
     protected int amount;
     protected String currency;
@@ -13,12 +13,24 @@ public abstract class Money {
         this.currency = currency;
     }
 
-    abstract Money times(int multiplier);
+    String currency() {
+        return this.currency;
+    }
+
+    public Money times(int multiplier) {
+        return new Money(amount * multiplier, currency);
+    }
 
     @Override
     public boolean equals(Object obj) {
         Money money = (Money) obj;
-        return this.amount == money.amount && this.getClass().equals(money.getClass());
+        return this.amount == money.amount
+                && this.currency == money.currency;
+    }
+
+    @Override
+    public String toString() {
+        return amount + " " + currency;
     }
 
     public static Money dollar(int amount) {
@@ -29,7 +41,4 @@ public abstract class Money {
         return new Franc(amount, "CHF");
     }
 
-    String currency() {
-        return this.currency;
-    }
 }
