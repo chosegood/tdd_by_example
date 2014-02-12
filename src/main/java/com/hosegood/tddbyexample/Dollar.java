@@ -2,7 +2,7 @@ package com.hosegood.tddbyexample;
 
 public class Dollar {
 
-    public int amount;
+    private final int amount;
 
     public Dollar(int amount) {
         this.amount = amount;
