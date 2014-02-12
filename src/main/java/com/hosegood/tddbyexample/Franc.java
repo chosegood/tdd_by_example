@@ -1,8 +1,6 @@
 package com.hosegood.tddbyexample;
 
-public class Franc {
-
-    private final int amount;
+public class Franc extends Money {
 
     public Franc(int amount) {
         this.amount = amount;
@@ -14,8 +12,8 @@ public class Franc {
 
     @Override
     public boolean equals(Object obj) {
-        Franc franc = (Franc) obj;
-        return this.amount == franc.amount;
+        Money money = (Money) obj;
+        return this.amount == money.amount;
     }
 
 }
