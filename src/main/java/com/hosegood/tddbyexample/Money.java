@@ -6,9 +6,9 @@ package com.hosegood.tddbyexample;
 public abstract class Money {
 
     protected int amount;
+    protected String currency;
 
     abstract Money times(int multiplier);
-    abstract String currency();
 
     @Override
     public boolean equals(Object obj) {
@@ -25,4 +25,7 @@ public abstract class Money {
         return new Franc(amount);
     }
 
+    String currency() {
+        return this.currency;
+    }
 }
