@@ -10,7 +10,7 @@ public class Bank {
         return source.reduce(this, to);
     }
 
-    int rate(String from, String to) {
+    public int rate(String from, String to) {
         if (from.equals(to)) {
             return 1;
         }
