@@ -49,11 +49,6 @@ public class MoneyTest {
     }
 
     @Test
-    public void testArrayEquals() {
-        assertEquals(new Object[] { "abc" }, new Object[] { "abc" });
-    }
-
-    @Test
     public void testPlusReturnsSum() {
         Money five = Money.dollar(5);
         Expression result = five.plus(five);
@@ -94,4 +89,13 @@ public class MoneyTest {
         assertTrue(new Money(10, "CHF").equals(new Franc(10, "CHF")));
     }
 
+    @Test
+    public void testMixedAddition() {
+        Expression fiveBucks = Money.dollar(5);
+        Expression tenFrancs = Money.franc(10);
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Money result = bank.reduce(fiveBucks.plus(tenFrancs), "USD");
+        assertEquals(Money.dollar(10), result);
+    }
 }
